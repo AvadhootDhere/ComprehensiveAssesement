@@ -13,7 +13,7 @@ node {
 		stage('Build JAR') {
 	    	docker.image('maven:3.6.3-jdk-1.8').inside('-v /root/.m2:/root/.m2') {
 	        	sh 'mvn -B clean package'
-	        	stash includes: '**/target/comprehensive-assesement.jar', name: 'jar'
+	        	stash includes: '**/target/assesement-comprehensive.jar', name: 'jar'
 	    	}
 	    }
 	     
