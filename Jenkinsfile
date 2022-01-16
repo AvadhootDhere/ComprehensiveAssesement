@@ -1,6 +1,6 @@
 pipeline { 
     environment { 
-        registry = "avadhootdhere/assesement-comprehensive" 
+        imagename = "avadhootdhere/assesement_comprehensive"
         registryCredential = 'DockerHubId' 
         dockerImage = '' 
     }
@@ -14,7 +14,7 @@ pipeline {
         stage('Building our image') { 
             steps { 
                 script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                    dockerImage = docker.build imagename 
                 }
             } 
         }
@@ -22,14 +22,16 @@ pipeline {
             steps { 
                 script { 
                     docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
+                        dockerImage.push("$BUILD_NUMBER")
+                        dockerImage.push('latest')
                     }
                 } 
             }
         } 
         stage('Cleaning up') { 
             steps { 
-                sh "docker rmi $registry:$BUILD_NUMBER" 
+                sh "docker rmi $imagename:$BUILD_NUMBER"
+                sh "docker rmi $imagename:latest"
             }
         } 
     }
