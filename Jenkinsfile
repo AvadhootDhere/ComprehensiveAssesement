@@ -19,12 +19,12 @@ node {
 	     
 	    stage('Build Image') {
 	    	unstash 'jar'
-			app = docker.build image
+			app = docker.build image + ':$BUILD_NUMBER'
 	    }
 	    
 	    stage('Push') {
 	    	docker.withRegistry('https://registry.hub.docker.com', 'DockerHubId') {            
-				app.push("${env.BUILD_NUMBER}")
+				app.push()
 	        }    
 	    }
 	} catch (e) {
