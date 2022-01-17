@@ -58,7 +58,7 @@ public class EmployeeController {
 	    }      
 	}
 	@PostMapping("/employees/add")
-	public ResponseEntity<Employee> add(@RequestBody Employee emp) {
+	public ResponseEntity<?> add(@RequestBody Employee emp) {
 		
 			try{if(!checkId(emp))
 			{
@@ -71,7 +71,7 @@ public class EmployeeController {
 			}catch(DBException ex)
 			{
 				System.out.println("Employee already Exists in Database");
-				return new ResponseEntity<Employee>(emp,HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<String>("Employee Already Exists in Database",HttpStatus.BAD_REQUEST);
 				
 			}
 		}
