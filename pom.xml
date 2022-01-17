@@ -52,7 +52,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-	<finalName>assesement-comprehensive</finalName>
+	<finalName>compassesement</finalName>
 	</build>
 
 </project>
