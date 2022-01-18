@@ -28,5 +28,9 @@ public class EmployeeService {
 	    public Employee get(Integer id) {
 	        return repo.findById(id).get();
 	    }
+	    
+	    public void delete(Integer id) {
+	        repo.deleteById(id);
+	    }
 
 }
