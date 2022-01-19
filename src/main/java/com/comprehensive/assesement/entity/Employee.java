@@ -70,7 +70,7 @@ public class Employee implements Comparable{
 		}
 		else
 		{
-			return (int) (this.getSalary()-sal);
+			return (int) (sal-this.getSalary());
 		}
 	}
 	
