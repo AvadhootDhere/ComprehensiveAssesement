@@ -1,2 +1,2 @@
 # ComprehensiveAssesement
-Assesement
+Mini Project Assesement
